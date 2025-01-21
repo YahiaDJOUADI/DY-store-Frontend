@@ -37,7 +37,6 @@ export default function QuizGame({ onClose }) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [quizCompleted, setQuizCompleted] = useState(false);
 
-  // Handle answer selection
   const handleAnswer = (option) => {
     setSelectedOption(option);
     if (option === quizQuestions[currentQuestion].answer) {
@@ -53,30 +52,27 @@ export default function QuizGame({ onClose }) {
       } else {
         setQuizCompleted(true);
         toast.success("Quiz completed! Closing...");
-        setTimeout(() => onClose(), 3000); // Close modal after 3 seconds
+        setTimeout(() => onClose(), 3000);
       }
     }, 1000);
   };
 
   if (quizCompleted) {
     return (
-      <div className="text-center p-6 bg-white rounded-lg shadow-lg border border-gray-200 relative">
-        {/* Close Button */}
+      <div className="text-center p-6 bg-[#f2f2f2] rounded-lg shadow-lg border border-[#1d2731] relative">
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition-all"
+          className="absolute top-2 right-2 text-[#1d2731] hover:text-[#235789] transition-colors"
         >
           <FaTimes size={24} />
         </button>
-
-        {/* Completion Message */}
         <div className="flex flex-col items-center justify-center gap-4">
-          <FaSmile size={48} className="text-green-500" />
-          <h2 className="text-2xl font-bold text-gray-800">Congratulations!</h2>
-          <p className="text-gray-700 text-lg">You've completed the quiz.</p>
+          <FaSmile size={48} className="text-[#ffcb05]" />
+          <h2 className="text-2xl font-bold text-[#1d2731]">Congratulations!</h2>
+          <p className="text-[#235789] text-lg">You've completed the quiz.</p>
           <div className="flex items-center justify-center gap-2">
-            <FaTrophy size={24} className="text-yellow-500" />
-            <p className="text-gray-700 text-lg">Final Score: {score}</p>
+            <FaTrophy size={24} className="text-[#ffcb05]" />
+            <p className="text-[#235789] text-lg">Final Score: {score}</p>
           </div>
         </div>
       </div>
@@ -84,47 +80,38 @@ export default function QuizGame({ onClose }) {
   }
 
   return (
-    <div className="text-center p-6 bg-white rounded-lg shadow-lg border border-gray-200 relative">
-      {/* Close Button */}
+    <div className="text-center p-6 bg-[#f2f2f2] rounded-lg shadow-lg border border-[#1d2731] relative">
       <button
         onClick={onClose}
-        className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition-all"
+        className="absolute top-2 right-2 text-[#1d2731] hover:text-[#235789] transition-colors"
       >
         <FaTimes size={24} />
       </button>
-
-      {/* Quiz Header */}
       <div className="flex items-center justify-center gap-2 mb-4">
-        <FaGamepad size={32} className="text-purple-500" />
-        <h2 className="text-2xl font-bold text-gray-800">Gaming Quiz</h2>
+        <FaGamepad size={32} className="text-[#235789]" />
+        <h2 className="text-2xl font-bold text-[#1d2731]">Gaming Quiz</h2>
       </div>
-
-      {/* Score Display */}
       <div className="flex items-center justify-center gap-2 mb-6">
-        <FaTrophy size={24} className="text-yellow-500" />
-        <p className="text-gray-700 text-lg">Score: {score}</p>
+        <FaTrophy size={24} className="text-[#ffcb05]" />
+        <p className="text-[#235789] text-lg">Score: {score}</p>
       </div>
-
-      {/* Question Card */}
-      <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+      <div className="bg-[#0b3c5d] p-6 rounded-lg border border-[#1d2731]">
         <div className="flex items-center justify-center gap-2 mb-4">
-          <FaQuestionCircle size={24} className="text-blue-500" />
-          <h3 className="text-xl font-bold text-gray-800">
+          <FaQuestionCircle size={24} className="text-[#f2f2f2]" />
+          <h3 className="text-xl font-bold text-[#f2f2f2]">
             {quizQuestions[currentQuestion].question}
           </h3>
         </div>
-
-        {/* Options Grid */}
         <div className="grid grid-cols-2 gap-4">
           {quizQuestions[currentQuestion].options.map((option, index) => (
             <button
               key={index}
               onClick={() => handleAnswer(option)}
-              className={`bg-white text-gray-800 px-4 py-3 rounded-lg hover:bg-gray-100 transition-all border border-gray-200 ${
+              className={`bg-[#f2f2f2] text-[#1d2731] px-4 py-3 rounded-lg hover:bg-[#235789] hover:text-[#f2f2f2] transition-colors border border-[#1d2731] ${
                 selectedOption === option
                   ? option === quizQuestions[currentQuestion].answer
-                    ? "bg-green-100 border-green-500"
-                    : "bg-red-100 border-red-500"
+                    ? "bg-[#0b3c5d] border-[#235789] text-[#f2f2f2]"
+                    : "bg-[#ffcb05] border-[#1d2731] text-[#1d2731]"
                   : ""
               }`}
             >

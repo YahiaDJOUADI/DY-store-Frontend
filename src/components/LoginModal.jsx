@@ -33,7 +33,6 @@ const LoginModal = ({ onClose, onLoginSuccess }) => {
     setError(null);
 
     try {
-      // Perform login request
       const response = await axios.post("http://localhost:3001/login", {
         email,
         password,
@@ -41,19 +40,10 @@ const LoginModal = ({ onClose, onLoginSuccess }) => {
 
       const { token, user } = response.data;
 
-      // Save the token to localStorage
       localStorage.setItem("token", token);
-
-      // Dispatch login action to Redux
       dispatch(login({ user, token }));
-
-      // Notify parent (Navbar) of successful login
       onLoginSuccess(token);
-
-      // Redirect to home page
       router.push("/");
-
-      // Close the modal after successful login
       onClose();
     } catch (err) {
       setError(
@@ -89,7 +79,7 @@ const LoginModal = ({ onClose, onLoginSuccess }) => {
 
         <h2
           id="login-modal-title"
-          className="text-3xl font-bold text-center text-[#127AC1] mb-8"
+          className="text-3xl font-bold text-center text-[#235789] mb-8" /* Medium Blue */
         >
           Welcome Back!
         </h2>
@@ -97,7 +87,7 @@ const LoginModal = ({ onClose, onLoginSuccess }) => {
         <form onSubmit={handleLogin}>
           {error && (
             <div
-              className="mb-4 p-3 text-center text-sm text-red-600 bg-red-100 border border-red-200 rounded-lg"
+              className="mb-4 p-3 text-center text-sm text-[#ED3926] bg-red-100 border border-red-200 rounded-lg" /* Red */
               role="alert"
             >
               {error}
@@ -107,14 +97,14 @@ const LoginModal = ({ onClose, onLoginSuccess }) => {
           <div className="mb-6">
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-[#1d2731] mb-1" /* Dark Gray */
             >
               Email Address
             </label>
             <input
               type="email"
               id="email"
-              className="w-full px-4 py-3 border rounded-lg shadow-sm focus:ring-[#127AC1] focus:border-[#127AC1] border-gray-300"
+              className="w-full px-4 py-3 border rounded-lg shadow-sm focus:ring-[#235789] focus:border-[#235789] border-gray-300" /* Medium Blue */
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -126,7 +116,7 @@ const LoginModal = ({ onClose, onLoginSuccess }) => {
           <div className="mb-6 relative">
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-[#1d2731] mb-1" /* Dark Gray */
             >
               Password
             </label>
@@ -134,7 +124,7 @@ const LoginModal = ({ onClose, onLoginSuccess }) => {
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
-                className="w-full px-4 py-3 border rounded-lg shadow-sm focus:ring-[#127AC1] focus:border-[#127AC1] border-gray-300 pr-12"
+                className="w-full px-4 py-3 border rounded-lg shadow-sm focus:ring-[#235789] focus:border-[#235789] border-gray-300 pr-12" /* Medium Blue */
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -144,7 +134,7 @@ const LoginModal = ({ onClose, onLoginSuccess }) => {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-4 flex items-center text-gray-500 hover:text-[#127AC1]"
+                className="absolute inset-y-0 right-4 flex items-center text-gray-500 hover:text-[#235789]" /* Medium Blue */
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? (
@@ -160,7 +150,7 @@ const LoginModal = ({ onClose, onLoginSuccess }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             type="submit"
-            className="w-full bg-[#127AC1] text-white py-3 rounded-lg shadow-lg hover:bg-[#ED3926] transition duration-300 font-semibold"
+            className="w-full bg-[#235789] text-white py-3 rounded-lg shadow-lg hover:bg-[#0b3c5d] transition duration-300 font-semibold" /* Medium Blue and Dark Blue */
             disabled={loading}
             aria-label="Log In"
           >

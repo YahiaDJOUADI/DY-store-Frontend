@@ -33,12 +33,10 @@ export default function MyAccount() {
     phone: "",
   });
 
-  // Default profile pictures for users and admins
   const defaultProfilePicture = user?.type === "admin"
     ? "/cute-angry-diver-gaming-cartoon-vector-icon-illustration-science-technology-icon-isolated-flat_138676-12437.avif"
     : "/cute-diver-playing-vr-game-with-controller-cartoon-vector-icon-illustration-science-technology-flat_138676-13994.avif";
 
-  // Fetch user data
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -69,7 +67,6 @@ export default function MyAccount() {
     fetchUserData();
   }, [dispatch]);
 
-  // Sync formData with Redux state whenever user changes
   useEffect(() => {
     if (user) {
       setFormData({
@@ -80,7 +77,6 @@ export default function MyAccount() {
     }
   }, [user]);
 
-  // Handle input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -89,7 +85,6 @@ export default function MyAccount() {
     });
   };
 
-  // Handle form submission
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -123,12 +118,10 @@ export default function MyAccount() {
     }
   };
 
-  // Handle field edit
   const handleFieldEdit = (field) => {
     setEditMode(field);
   };
 
-  // Handle cancel edit
   const handleCancelEdit = () => {
     setEditMode(false);
     setFormData({
@@ -138,16 +131,14 @@ export default function MyAccount() {
     });
   };
 
-  // Loading state
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <FaSpinner className="animate-spin text-4xl text-[#127AC1]" />
+        <FaSpinner className="animate-spin text-4xl text-[#235789]" />
       </div>
     );
   }
 
-  // Error state
   if (error) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -157,17 +148,15 @@ export default function MyAccount() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-8">
-      {/* Centered Profile Picture with Gaming Icons */}
+    <div className="min-h-screen bg-[#f2f2f2] flex flex-col items-center py-8">
       <motion.div
         className="w-full max-w-4xl relative flex flex-col items-center justify-center p-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Gaming Icons */}
         <motion.div
-          className="absolute top-0 left-0 text-[#127AC1] text-4xl"
+          className="absolute top-0 left-0 text-[#235789] text-4xl"
           initial={{ x: -50, y: -50 }}
           animate={{ x: 0, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -175,7 +164,7 @@ export default function MyAccount() {
           <FaGamepad />
         </motion.div>
         <motion.div
-          className="absolute top-0 right-0 text-[#ED3926] text-4xl"
+          className="absolute top-0 right-0 text-[#ffcb05] text-4xl"
           initial={{ x: 50, y: -50 }}
           animate={{ x: 0, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -183,7 +172,7 @@ export default function MyAccount() {
           <FaTrophy />
         </motion.div>
         <motion.div
-          className="absolute bottom-0 left-0 text-[#127AC1] text-4xl"
+          className="absolute bottom-0 left-0 text-[#235789] text-4xl"
           initial={{ x: -50, y: 50 }}
           animate={{ x: 0, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -191,7 +180,7 @@ export default function MyAccount() {
           <FaShieldAlt />
         </motion.div>
         <motion.div
-          className="absolute bottom-0 right-0 text-[#ED3926] text-4xl"
+          className="absolute bottom-0 right-0 text-[#ffcb05] text-4xl"
           initial={{ x: 50, y: 50 }}
           animate={{ x: 0, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
@@ -199,8 +188,7 @@ export default function MyAccount() {
           <FaDice />
         </motion.div>
 
-        {/* Profile Picture */}
-        <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-[#127AC1] shadow-lg">
+        <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-[#235789] shadow-lg">
           <img
             src={defaultProfilePicture}
             alt="Profile"
@@ -208,28 +196,25 @@ export default function MyAccount() {
           />
         </div>
 
-        {/* User Info */}
         <div className="mt-4 text-center">
-          <h2 className="text-2xl font-bold text-gray-900">{user?.userName}</h2>
-          <p className="text-sm text-gray-600">{user?.email}</p>
+          <h2 className="text-2xl font-bold text-[#1d2731]">{user?.userName}</h2>
+          <p className="text-sm text-[#1d2731]">{user?.email}</p>
         </div>
       </motion.div>
 
-      {/* Personal Information Card */}
       <motion.div
         className="w-full max-w-4xl bg-white rounded-xl shadow-lg mt-6 p-6"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <h3 className="text-xl font-semibold text-gray-900 mb-6">Personal Information</h3>
+        <h3 className="text-xl font-semibold text-[#1d2731] mb-6">Personal Information</h3>
 
-        {/* Username */}
         <div className="flex flex-col space-y-4">
-          <div className="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
+          <div className="flex justify-between items-center p-4 bg-[#f2f2f2] rounded-lg">
             <div className="flex items-center space-x-4">
-              <FaUserCircle className="text-[#127AC1] text-2xl" />
-              <span className="text-lg text-gray-700">Username</span>
+              <FaUserCircle className="text-[#235789] text-2xl" />
+              <span className="text-lg text-[#1d2731]">Username</span>
             </div>
             <div className="flex items-center space-x-4">
               {editMode === "userName" ? (
@@ -238,23 +223,22 @@ export default function MyAccount() {
                   name="userName"
                   value={formData.userName}
                   onChange={handleInputChange}
-                  className="text-lg text-gray-700 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#127AC1]"
+                  className="text-lg text-[#1d2731] px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235789]"
                 />
               ) : (
-                <span className="text-lg text-gray-700">{user?.userName}</span>
+                <span className="text-lg text-[#1d2731]">{user?.userName}</span>
               )}
               <FaEdit
-                className="cursor-pointer text-[#127AC1] text-xl hover:text-[#0e6aa8] transition-all"
+                className="cursor-pointer text-[#235789] text-xl hover:text-[#0b3c5d] transition-all"
                 onClick={() => handleFieldEdit("userName")}
               />
             </div>
           </div>
 
-          {/* Email */}
-          <div className="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
+          <div className="flex justify-between items-center p-4 bg-[#f2f2f2] rounded-lg">
             <div className="flex items-center space-x-4">
-              <FaEnvelope className="text-[#127AC1] text-2xl" />
-              <span className="text-lg text-gray-700">Email</span>
+              <FaEnvelope className="text-[#235789] text-2xl" />
+              <span className="text-lg text-[#1d2731]">Email</span>
             </div>
             <div className="flex items-center space-x-4">
               {editMode === "email" ? (
@@ -263,23 +247,22 @@ export default function MyAccount() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="text-lg text-gray-700 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#127AC1]"
+                  className="text-lg text-[#1d2731] px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235789]"
                 />
               ) : (
-                <span className="text-lg text-gray-700">{user?.email}</span>
+                <span className="text-lg text-[#1d2731]">{user?.email}</span>
               )}
               <FaEdit
-                className="cursor-pointer text-[#127AC1] text-xl hover:text-[#0e6aa8] transition-all"
+                className="cursor-pointer text-[#235789] text-xl hover:text-[#0b3c5d] transition-all"
                 onClick={() => handleFieldEdit("email")}
               />
             </div>
           </div>
 
-          {/* Phone */}
-          <div className="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
+          <div className="flex justify-between items-center p-4 bg-[#f2f2f2] rounded-lg">
             <div className="flex items-center space-x-4">
-              <FaPhoneAlt className="text-[#127AC1] text-2xl" />
-              <span className="text-lg text-gray-700">Phone</span>
+              <FaPhoneAlt className="text-[#235789] text-2xl" />
+              <span className="text-lg text-[#1d2731]">Phone</span>
             </div>
             <div className="flex items-center space-x-4">
               {editMode === "phone" ? (
@@ -288,32 +271,31 @@ export default function MyAccount() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="text-lg text-gray-700 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#127AC1]"
+                  className="text-lg text-[#1d2731] px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235789]"
                 />
               ) : (
-                <span className="text-lg text-gray-700">{user?.phone}</span>
+                <span className="text-lg text-[#1d2731]">{user?.phone}</span>
               )}
               <FaEdit
-                className="cursor-pointer text-[#127AC1] text-xl hover:text-[#0e6aa8] transition-all"
+                className="cursor-pointer text-[#235789] text-xl hover:text-[#0b3c5d] transition-all"
                 onClick={() => handleFieldEdit("phone")}
               />
             </div>
           </div>
         </div>
 
-        {/* Save/Cancel Buttons */}
         {editMode && (
           <div className="flex space-x-4 mt-6">
             <motion.button
               onClick={handleFormSubmit}
-              className="w-full py-3 bg-[#127AC1] text-white rounded-lg font-semibold text-lg flex items-center justify-center space-x-2 hover:bg-[#0e6aa8] transition-all"
+              className="w-full py-3 bg-[#235789] text-white rounded-lg font-semibold text-lg flex items-center justify-center space-x-2 hover:bg-[#0b3c5d] transition-all"
             >
               <FaSave />
               <span>Save Changes</span>
             </motion.button>
             <motion.button
               onClick={handleCancelEdit}
-              className="w-full py-3 bg-gray-500 text-white rounded-lg font-semibold text-lg flex items-center justify-center space-x-2 hover:bg-gray-600 transition-all"
+              className="w-full py-3 bg-[#ffcb05] text-[#1d2731] rounded-lg font-semibold text-lg flex items-center justify-center space-x-2 hover:bg-[#e6b800] transition-all"
             >
               <FaTimes />
               <span>Cancel</span>
